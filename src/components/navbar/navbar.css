@@ -1,0 +1,46 @@
+.topBanner{
+    background-color: var(--secondary);
+    color: var(--tertiary);
+    padding-block: 0.5rem;
+    text-align: center;
+}
+.navbarContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 5rem;
+    padding-block:0.5rem ;
+}   
+
+.navbarLogo{
+  width: 17rem;
+}
+
+.navbarList{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbarListItem{
+    color: var(--secondary);
+    font-size: large;
+    margin-inline: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.navbarListItem:hover{
+    color: var(--primary);
+}
+
+.navbarListItemReserva{
+    background-color: var(--primary);
+    color: var(--secondary);
+    font-weight: 700;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    margin-left: 2rem;
+}
