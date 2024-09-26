@@ -1,0 +1,88 @@
+.rbc-month-view .rbc-button-link {
+  cursor: default !important;
+}
+
+/* Días disponibles (verde) */
+.available {
+  background-color: #7ce093; /* Verde claro */
+  color: #155724; /* Texto verde oscuro */
+}
+
+.available:hover, .unavailable:hover {
+  border: var(--primary) 2px solid !important;
+}
+
+/* Días sin horas disponibles (rojo) */
+.unavailable {
+  background-color: #dac8c9; /* Rojo claro */
+  color: #721c24; /* Texto rojo oscuro */
+}
+
+/* Contenedor principal para el calendario y la sección de horas */
+.tomarseFechaContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para la sección de horas disponibles */
+.hoursContainer {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra sutil para darle profundidad */
+}
+
+/* Subtítulo de la sección de horas disponibles */
+.hoursContainer h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Lista de horas disponibles */
+.hoursList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Estilos para cada hora en la lista */
+.hourItem {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #f0f8ff; /* Fondo muy ligero azul para cada hora */
+  margin-bottom: 5px; /* Espacio entre cada elemento de la lista */
+  border: 1px solid #e1e1e1; /* Borde sutil para cada elemento */
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.hourItem:hover {
+  background-color: #e0e0e0; /* Color al hacer hover */
+}
+
+.hourItem.selected {
+  background-color: #4caf50; /* Color de fondo para la hora seleccionada */
+  color: white;
+  border-color: #388e3c; /* Borde verde oscuro para la hora seleccionada */
+}
+
+/* Mensaje cuando no hay horas disponibles */
+.noHoursMessage {
+  font-size: 16px;
+  color: #777;
+  text-align: center; /* Centra el mensaje en caso de no haber horas */
+  margin: 0;
+}
+
+
