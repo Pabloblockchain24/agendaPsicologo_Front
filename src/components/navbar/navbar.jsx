@@ -35,7 +35,7 @@ function Navbar() {
                 Horario De Atención: 9:00 am - 7:00 pm / Sábados 9:00 - 13:00
             </div>
            <header className='navbarContainer'>
-                <NavLink to='/'> <img src="../../src/assets/logoClinica.jpg" alt="Logo" className="navbarLogo" /> </NavLink>
+                <NavLink to='/'> <img src="../../logoClinica.jpg" alt="Logo" className="navbarLogo" /> </NavLink>
 
 
                 <button className="menuMobile" onClick={toggleMenu}> <PiListFill className='buttonAbrir' /> </button>
