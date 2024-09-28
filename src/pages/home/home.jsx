@@ -21,7 +21,7 @@ function Home() {
   return (
     <main>
       <section>
-        <article className='BannerContainer' style={{ backgroundImage: `url(../../src/assets/banner1.jpg)` }} >
+        <article className='BannerContainer' style={{ backgroundImage: `url(../../banner1.jpg)` }} >
           <a href="/reservarHora" className="BannerButton"> RESERVA TU HORA </a>
         </article>
         <button className='arrowDown parpadear' onClick={scrollToInfo}> 
