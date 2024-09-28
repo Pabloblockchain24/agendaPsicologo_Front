@@ -1,9 +1,9 @@
-import React from 'react'
-
-import { FaArrowDown } from "react-icons/fa";
+/*import dependencies*/
+import { NavLink } from "react-router-dom"
 
 /*import styles*/
 import './home.css'
+import { FaArrowDown } from "react-icons/fa";
 
 /*Import components*/
 import MainInfo from '../../components/mainInfo/mainInfo'
@@ -22,8 +22,9 @@ function Home() {
     <main>
       <section>
         <article className='BannerContainer' style={{ backgroundImage: `url(../../banner1.jpg)` }} >
-          <a href="/reservarHora" className="BannerButton"> RESERVA TU HORA </a>
+          <NavLink to="/reservarHora" className="BannerButton"> RESERVA TU HORA </NavLink>
         </article>
+
         <button className='arrowDown parpadear' onClick={scrollToInfo}> 
           <FaArrowDown />
         </button>

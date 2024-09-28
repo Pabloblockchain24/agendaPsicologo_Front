@@ -6,7 +6,7 @@ function Nosotros() {
     <main className="nosotrosContainer">
       <section className="nosotrosImageContainer">
         <img 
-          src="../../src/assets/nosotros.jpg" 
+          src="../../nosotros.jpg" 
           alt="Imagen de nosotros" 
           className="nosotrosImage"
         />

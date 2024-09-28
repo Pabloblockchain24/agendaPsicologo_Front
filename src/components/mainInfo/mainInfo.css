@@ -1,5 +1,6 @@
 .mainInfoContainer{
   padding: 1rem;
+  margin-top: 5rem;
 }
 .mainInfoTitle {
     text-align: center;
@@ -52,10 +53,11 @@
   }
 
 
-  @media (max-width: 998px) {
+  @media (max-width: 988px) {
     .mainInfoContainer{
       padding-bottom: 0rem;
       padding: 1rem;
+      margin-top: 0rem;
     }
 
     .mainInfoTitle {
