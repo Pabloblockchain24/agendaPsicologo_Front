@@ -117,9 +117,9 @@
   }
 
   
-@media (max-width: 400px) { 
+@media (max-width: 450px) { 
   .progress-bar-container {
-    width: 20rem;
+    width: 18rem;
   }
   .step::after {
     width: 3rem;
