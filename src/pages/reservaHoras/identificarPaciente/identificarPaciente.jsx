@@ -23,8 +23,8 @@ const validationSchema = Yup.object({
     .required('Rut Paciente es requerido')
 });
 
-function IdentificarPaciente({ setIsValido}) {
-  const { saveRut, currentStep, nextStep, prevStep} = useCitas();
+function IdentificarPaciente({ setIsValido }) {
+  const { saveRut, currentStep, nextStep, prevStep } = useCitas();
 
   return (
     <Formik
@@ -43,18 +43,20 @@ function IdentificarPaciente({ setIsValido}) {
         return (
           <Form className='citasCard'>
             <h1 className='citasCardTitle'>¡Hola! Por favor, ingrese sus datos para continuar.</h1>
-            <div className='identificacionInputContainer'>
-              <label className='identificacionInputLabel'>Documento</label>
-              <select
-                name="documento"
-                onChange={handleChange}
-                className='identificacionInputBox'
-              >
-                <option value="">Selecciona una opción</option>
-                <option value="carnet">Carnet de Identidad</option>
-                <option value="pasaporte">Pasaporte</option>
-              </select>
-            </div>
+ 
+              <div className='identificacionInputContainer'>
+                <label className='identificacionInputLabel'>Documento</label>
+                <select
+                  name="documento"
+                  onChange={handleChange}
+                  className='identificacionInputBox'
+                >
+                  <option value="">Selecciona una opción</option>
+                  <option value="carnet">Carnet de Identidad</option>
+                  <option value="pasaporte">Pasaporte</option>
+                </select>
+              </div>
+
 
             <div className='identificacionInputContainer'>
               <label className='identificacionInputLabel'>Rut Paciente</label>
