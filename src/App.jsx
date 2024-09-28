@@ -23,7 +23,6 @@ function App() {
       <CitasProvider>
         <PsicologosProvider>
           <Navbar />
-          <hr />
           <Routes>
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Home />} />
