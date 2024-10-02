@@ -3,19 +3,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5rem;
+    padding-block: 5rem;
+}
+
+.citasContent{
+    width: 100%;
+    padding-inline: 25rem;
 }
 
 .citasCard {
-    width: 60rem;
+    width: 100%;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3rem; 
     gap: 1.75rem;
+    padding-block: 3rem;
 }
 
 .citasCardTitle{
@@ -24,12 +29,11 @@
     color: var(--secondary);
     padding-top: 1rem;
     padding-bottom: 2rem;
-    padding-inline: 0rem;
+    padding-inline: 1rem;
     text-align: center; 
 }
 
 .formNavigationContainer{
-    width: 40rem;
     background-color: white;
     display: flex;
     justify-content: space-around;
@@ -74,53 +78,53 @@
   }
   
 
-  @media (max-width: 1200px) {
-
-    .citasCard {
-        width: 50rem;
+  @media (max-width: 1400px) {
+    .citasContent{
+        padding-inline: 18rem;
     }
 
+
+}
+
+@media (max-width: 1200px) {
+    .citasContent{
+        padding-inline: 12rem;
+    }
 }
 
 @media (max-width: 998px) {
+    .citasContent{
+        padding-inline: 8rem;
 
-    .citasCard {
-        width: 40rem;
     }
-
 }
 
 @media (max-width: 768px) {
-    .citasCard {
-        width: 30rem;
-    }
-    .formNavigationContainer{
-        width: 20rem;
-    }
-
+    .citasContent{
+        padding-inline: 4rem;
+ }
 }
 
 @media (max-width: 500px) { 
-    .citasCard {
-        width: 25rem;
+    .citasContent{
+        padding-inline: 3rem;
     }
+    .citasContainer {
+        padding-block: 2rem;
+    }
+
     .formNavigationContainer{
-        width: 20rem;
+        padding-block: 0.5rem;
     }
+
 
 }
 
 @media (max-width: 450px) { 
-    .citasCard {
-        width: 19rem;
-    }
-    .formNavigationContainer{
-        width: 19rem;
+    .citasContent{
+        padding-inline: 2rem;
     }
 
-    .citasContainer {
-        padding: 3rem;
-    }
     .citasCardButton{
         width: 8rem;
         padding: 0.75rem; 
@@ -129,6 +133,4 @@
         font-size: small;
     }
     
-
-
 }

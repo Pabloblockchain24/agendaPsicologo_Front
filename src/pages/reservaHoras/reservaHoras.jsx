@@ -36,42 +36,45 @@ function Citas() {
   //   saveRut(rut);
   //   console.log('El rut guardado en el context es:', rutUsuario)
   // }
-    
+
 
   const handlePrevStep = () => {
     prevStep();
-    setIsValido(false);   
+    setIsValido(false);
   };
 
-/*Reset at each step back*/
-useEffect(() => {
-  if (currentStep === 0) {
-    setIsValido(false); 
-  }
-}, [currentStep]);
+  /*Reset at each step back*/
+  useEffect(() => {
+    if (currentStep === 0) {
+      setIsValido(false);
+    }
+  }, [currentStep]);
 
   return (
     <main className='citasContainer'>
-      <ProgressBar />
+      <div className='citasContent'>
+        <ProgressBar />
 
-      {currentStep === 0 && (
-        <IdentificarPaciente
-          setIsValido={setIsValido}
-          handleSubmit={handleSubmit}         
-        />
-      )}
+        {currentStep === 0 && (
+          <IdentificarPaciente
+            setIsValido={setIsValido}
+            handleSubmit={handleSubmit}
+          />
+        )}
 
-      {currentStep === 1 && 
-      <Profesional setIsValido={setIsValido} 
-      />}
+        {currentStep === 1 &&
+          <Profesional setIsValido={setIsValido}
+          />}
 
-      {currentStep === 2 && 
-      <TomarFecha />
-      }
+        {currentStep === 2 &&
+          <TomarFecha />
+        }
 
-      {currentStep === 3 && 
-      <ConfirmarHora />
-      }
+        {currentStep === 3 &&
+          <ConfirmarHora />
+        }
+
+      </div>
 
     </main>
   );

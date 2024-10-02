@@ -1,8 +1,10 @@
 .identificacionInputContainer {
     display: inline-flex;
     flex-direction: column;
-    width: 35rem;
-    
+    width: 100%;
+    padding-inline: 10rem;
+    max-width: 60rem;
+    min-width: 30rem;
 }
 
 .identificacionInputLabel {
@@ -23,19 +25,26 @@
     padding: 1rem;
 }
 
-
-
-@media (max-width: 768px) {
+@media (max-width: 1400px) {
     .identificacionInputContainer {
-
-        width: 25rem;
-        
+        padding-inline: 8rem;
     }
 }
 
+
+
+@media (max-width: 998px) {
+    .identificacionInputContainer {
+        padding-inline: 6rem;
+    }
+}
+
+
 @media (max-width: 500px) {
     .identificacionInputContainer {
-        width: 20rem;
+        padding-inline: 2rem;
+        min-width: 10rem;
+
     }
     .identificacionInputBox {
         font-size: 0.8rem; 
@@ -46,6 +55,6 @@
 
 @media (max-width: 450px) {
     .identificacionInputContainer {
-        width: 15rem;
+        padding-inline: 2rem;
     }
 }

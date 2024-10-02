@@ -8,7 +8,7 @@ import { Stepper, Step, StepLabel } from '@mui/material';
 /*Import context*/
 import { useCitas } from '../../context/CitasContext';
 
-const steps = ['Identificar paciente', 'Escoger profesional', 'Escoger la hora', 'Confirmar la hora'];
+const steps = ['Identificar paciente', 'Escoger profesional', 'Escoger hora', 'Confirmar hora'];
 
 const ProgressBar = () => {
   const { currentStep } = useCitas();

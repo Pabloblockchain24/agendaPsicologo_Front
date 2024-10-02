@@ -1,5 +1,5 @@
 .progress-bar-container {
-    width: 60rem;
+    width: 100%;
     border-bottom: 2px solid #e0e0e0; /* Línea de separación */
     padding-bottom: 1.5rem;
     padding-top: 1rem;
@@ -12,6 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
   }
   
   .step {
@@ -27,7 +28,7 @@
     content: '';
     position: absolute;
     top: 100%;
-    width: 12rem;
+    width: 8rem;
     height: 6px;
     background-color: lightgray;
     z-index: 999;
@@ -56,7 +57,7 @@
 
   .step .label {
     color: gray;
-    font-size: 12px;
+    font-size: 0.75rem;
     padding-bottom: 0.25rem;
   }
   
@@ -67,45 +68,33 @@
   
 
   @media (max-width: 1200px) {
-    .progress-bar-container {
-      width: 50rem;
-    }
-    .step::after {
-      width: 10rem;
-    }
-  }
 
-
-  @media (max-width: 998px) {
-    .progress-bar-container {
-      width: 40rem;
-    }
     .step::after {
       width: 8rem;
     }
   }
 
-  
-  @media (max-width: 768px) {
-    .progress-bar-container {
-      width: 30rem;
-    }
+
+  @media (max-width: 998px) {
+
     .step::after {
       width: 6rem;
     }
   }
 
-    
-  @media (max-width: 500px) {
-    .progress-bar-container {
-      width: 25rem;
-    }
+  
+  @media (max-width: 768px) {
     .step::after {
       width: 4rem;
-      height: 4px;
-
     }
 
+  }
+
+    
+  @media (max-width: 500px) {
+    .step::after {
+      height: 4px;
+    }
     .step .circle {
       width: 20px;
       height: 20px;
@@ -118,13 +107,9 @@
 
   
 @media (max-width: 450px) { 
-  .progress-bar-container {
-    width: 19rem;
-  }
   .step::after {
     width: 3rem;
     height: 4px;
-
   }
 
   .step .circle {
