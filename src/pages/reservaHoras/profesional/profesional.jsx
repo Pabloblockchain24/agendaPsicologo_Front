@@ -10,6 +10,7 @@ import ProfesionalCard from '../../../components/profesionalCard/profesionalCard
 
 /* Import icons */
 import { IoMdArrowRoundBack } from "react-icons/io";
+import MoonLoader  from "react-spinners/MoonLoader";
 
 /* Import context */
 import { usePsicologos } from '../../../context/PsicologosContext';
@@ -62,6 +63,7 @@ function Profesional() {
         <div> Rut Paciente: {rutUsuario}</div>
         <h1 className='citasCardTitle'>ESCOGER PROFESIONAL</h1>
 
+        <section className='profesionalesContainer'>
         {psicologos.length > 0 ? (
           psicologos.map((psicologo) => (
             <ProfesionalCard
@@ -73,13 +75,15 @@ function Profesional() {
               titulo={psicologo.titulo}
               universidad={psicologo.universidad}
               descripcion={psicologo.descripcion}
-              onClick={() => handleProfesionalClick(psicologo)} // Pasa todo el objeto psicólogo
-              isSelected={profesionalSeleccionado?.id_psicologo === psicologo.id_psicologo} // Comparar id directo
+              onClick={() => handleProfesionalClick(psicologo)} 
+              isSelected={profesionalSeleccionado?.id_psicologo === psicologo.id_psicologo}
               />
           ))
         ) : (
-          <p>Cargando...</p>
+          <MoonLoader color='#007bff' />
         )}
+        </section>
+
 
         <footer className='formNavigationContainer'>
           {currentStep > 0 && (

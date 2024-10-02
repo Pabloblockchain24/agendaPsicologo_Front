@@ -1,7 +1,7 @@
 .card {
     display: flex;
     align-items: center;
-    width: 45rem;
+    width: 100%;
     padding: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -36,12 +36,14 @@
   }
   
   .name {
-    font-size: 1.2em;
+    font-size: 1.2rem;
     font-weight: bold;
     margin: 0;
   }
   
   .description {
+    display: flex;
+    flex-direction: column;
     color: #555;
     font-size: 0.9em;
     margin: 10px 0;
@@ -63,16 +65,32 @@
     cursor: pointer;
     font-size: 0.9em;
   }
+
   
-  .ver-mas {
-    background-color: #4CAF50;
-    color: white;
+@media (max-width: 998px) {
+  .name {
+    font-size: 1rem;
   }
-  
-  .reservar {
-    background-color: #FF9800;
-    color: white;
+  .description {
+    font-size: 0.8em;
   }
 
+  .profile-img {
+    width: 8rem;
+    height: 8rem;
+    margin-right: 1rem;
+  }
+
+}
 
 
+@media (max-width: 500px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .description{
+    gap: 0.5rem;
+  }
+
+}

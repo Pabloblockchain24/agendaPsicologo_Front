@@ -8,7 +8,7 @@
 
 .citasContent{
     width: 100%;
-    padding-inline: 25rem;
+    padding-inline: 18rem;
 }
 
 .citasCard {
@@ -39,6 +39,8 @@
     justify-content: space-around;
     align-items: center;
     padding-block: 1.5rem;
+    width: 100%;
+    padding-inline:6rem;
 
 }
 
@@ -80,10 +82,11 @@
 
   @media (max-width: 1400px) {
     .citasContent{
-        padding-inline: 18rem;
+        padding-inline: 14rem;
     }
-
-
+    .formNavigationContainer{
+        padding-inline: 4rem;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -95,14 +98,29 @@
 @media (max-width: 998px) {
     .citasContent{
         padding-inline: 8rem;
-
     }
+    .formNavigationContainer{
+        padding-inline: 4rem;
+    }
+    
+
 }
 
 @media (max-width: 768px) {
     .citasContent{
         padding-inline: 4rem;
  }
+
+ .formNavigationContainer{
+    padding-inline: 3rem;
+}
+
+.citasCardButton, .citasCardButtonBack{
+    padding: 0.75rem;
+    font-size: small; 
+    width: 7rem;
+}
+
 }
 
 @media (max-width: 500px) { 
@@ -112,12 +130,9 @@
     .citasContainer {
         padding-block: 2rem;
     }
-
     .formNavigationContainer{
         padding-block: 0.5rem;
     }
-
-
 }
 
 @media (max-width: 450px) { 
@@ -132,5 +147,16 @@
     .citasCardTitle{
         font-size: small;
     }
+
+    .citasCardButton, .citasCardButtonBack{
+        padding: 0.5rem;
+        font-size: small; 
+        width: 6rem;
+    }
+
+    .formNavigationContainer{
+        padding-inline:1.5rem;
+    }
+    
     
 }
