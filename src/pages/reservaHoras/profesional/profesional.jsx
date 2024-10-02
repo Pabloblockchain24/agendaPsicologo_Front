@@ -10,7 +10,7 @@ import ProfesionalCard from '../../../components/profesionalCard/profesionalCard
 
 /* Import icons */
 import { IoMdArrowRoundBack } from "react-icons/io";
-import MoonLoader  from "react-spinners/MoonLoader";
+import MoonLoader from "react-spinners/MoonLoader";
 
 /* Import context */
 import { usePsicologos } from '../../../context/PsicologosContext';
@@ -18,7 +18,7 @@ import { useCitas } from '../../../context/CitasContext';
 
 function Profesional() {
   const { rutUsuario, setProfesionalEscogido, currentStep, nextStep, prevStep, saveProfesional } = useCitas();
-  const [profesionalSeleccionado, setProfesionalSeleccionado] = useState(''); 
+  const [profesionalSeleccionado, setProfesionalSeleccionado] = useState('');
   const { getPsicologosApi } = usePsicologos();
   const [psicologos, setPsicologos] = useState({});
 
@@ -33,7 +33,7 @@ function Profesional() {
 
   /* Guarda el psicólogo seleccionado en el estado local */
   const handleProfesionalClick = (psicologo) => {
-    setProfesionalSeleccionado(psicologo); 
+    setProfesionalSeleccionado(psicologo);
   };
 
   /* Guardar el profesional seleccionado en el contexto */
@@ -42,7 +42,7 @@ function Profesional() {
       const nombreCompleto = `${profesionalSeleccionado.nombre} ${profesionalSeleccionado.apellido}`;
 
       setProfesionalEscogido({
-        nombrePsicologoEscogido: nombreCompleto, 
+        nombrePsicologoEscogido: nombreCompleto,
         idPsicologoEscogido: profesionalSeleccionado.id_psicologo,
         especialidad: profesionalSeleccionado.especialidad
       });
@@ -59,11 +59,11 @@ function Profesional() {
   };
 
   return (
-      <div className='citasCard'>
-        <div> Rut Paciente: {rutUsuario}</div>
-        <h1 className='citasCardTitle'>ESCOGER PROFESIONAL</h1>
+    <div className='citasCard'>
+      <div> Rut Paciente: {rutUsuario}</div>
+      <h1 className='citasCardTitle'>ESCOGER PROFESIONAL</h1>
 
-        <section className='profesionalesContainer'>
+      <section className='profesionalesContainer'>
         {psicologos.length > 0 ? (
           psicologos.map((psicologo) => (
             <ProfesionalCard
@@ -75,28 +75,31 @@ function Profesional() {
               titulo={psicologo.titulo}
               universidad={psicologo.universidad}
               descripcion={psicologo.descripcion}
-              onClick={() => handleProfesionalClick(psicologo)} 
+              onClick={() => handleProfesionalClick(psicologo)}
               isSelected={profesionalSeleccionado?.id_psicologo === psicologo.id_psicologo}
-              />
+            />
           ))
         ) : (
-          <MoonLoader color='#007bff' />
+          <div className='citasCardLoader'>
+            <MoonLoader color='#007bff' />
+
+          </div>
         )}
-        </section>
+      </section>
 
 
-        <footer className='formNavigationContainer'>
-          {currentStep > 0 && (
-            <button type="button" onClick={prevStep} className='citasCardButtonBack'>
-              <IoMdArrowRoundBack />
-            </button>
-          )}
-
-          <button type="button" className='citasCardButton' onClick={handleContinue}>
-            CONTINUAR
+      <footer className='formNavigationContainer'>
+        {currentStep > 0 && (
+          <button type="button" onClick={prevStep} className='citasCardButtonBack'>
+            <IoMdArrowRoundBack />
           </button>
-        </footer>
-      </div>
+        )}
+
+        <button type="button" className='citasCardButton' onClick={handleContinue}>
+          CONTINUAR
+        </button>
+      </footer>
+    </div>
   );
 }
 
