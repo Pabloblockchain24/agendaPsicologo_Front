@@ -46,8 +46,9 @@
   .testimonioTexto {
     font-size: 1.2rem;
     color: #555;
-    line-height: 1.5;
+    line-height: 1.25;
     margin-bottom: 1.5rem;
+    height: 10rem;
   }
   
   .testimonioNombre {

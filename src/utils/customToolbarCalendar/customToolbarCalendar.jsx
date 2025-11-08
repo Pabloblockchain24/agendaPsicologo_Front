@@ -2,21 +2,19 @@ import React from 'react';
 import { IconButton } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import './customToolbarCalendar.css';
 
 function CustomToolbar({ label, onNavigate }) {
   return (
-    <div className="rbc-toolbar">
-      {/* Flecha hacia atrás */}
-      <IconButton onClick={() => onNavigate('PREV')}>
-        <ArrowBackIcon />
+    <div className="rbc-toolbar customToolbar">
+      <IconButton onClick={() => onNavigate('PREV')} >
+        <ArrowBackIcon className='buttonToolbar'/>
       </IconButton>
       
-      {/* Título del mes y año */}
-      <span className="rbc-toolbar-label">{label}</span>
+      <span className="rbc-toolbar-label customToolbarLabel" >{label}</span>
       
-      {/* Flecha hacia adelante */}
       <IconButton onClick={() => onNavigate('NEXT')}>
-        <ArrowForwardIcon />
+        <ArrowForwardIcon className='buttonToolbar'/>
       </IconButton>
     </div>
   );

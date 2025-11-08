@@ -30,7 +30,7 @@ function Navbar() {
 
     return (
 
-        <>
+        < div className='navbar'>
             <div className='topBanner'>
                 Horario De Atención: 9:00 am - 7:00 pm / Sábados 9:00 - 13:00
             </div>
@@ -53,7 +53,7 @@ function Navbar() {
                     </ul>
                 </nav>
             </header>
-        </>
+        </div>
 
     )
 }

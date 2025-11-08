@@ -2,10 +2,11 @@
 import { createContext, useContext, useState } from "react";
 
 /* Import API functions */
-import { getAppointments, createAppointmentRequest } from "../api/citas.api";
+import { getAppointments, createAppointmentRequest, getUserDataRequest, updatePatientRequest, createNewPatientByConctactRequest, confirmationCitaMailRequest, getCitaRequest } from "../api/citas.api";
 
 /* Context instance */
 const CitasContext = createContext();
+
 
 export const useCitas = () => {
     const context = useContext(CitasContext);
@@ -42,6 +43,15 @@ export function CitasProvider({ children }) {
 
     const getRutUsuario = () => rutUsuario;
 
+    const getUserData = async (rut) => {
+        try {
+            const res = await getUserDataRequest(rut);
+            return res.data;
+        } catch (error) {
+            throw new Error(error);
+        }
+    };
+
     const getCitas = async () => {
         try {
             const res = await getAppointments();
@@ -52,11 +62,51 @@ export function CitasProvider({ children }) {
     };
 
     const createCita = async (cita) => {
+        console.log("llegue al createCita citaContext")
         try {
             const res = await createAppointmentRequest(cita);
             setCitas([...citas, res.data]);
+            return res.data.id_sesion;
         } catch (error) {
             console.error('Error creating appointment:', error);
+            throw new Error(error);
+        }
+    };
+
+    const updateContactPatient = async (patientData) => {
+        console.log(patientData)
+        try {
+            const res = await updatePatientRequest(patientData);
+            return res.data;
+        } catch (error) {
+            throw new Error(error);
+        }
+    } 
+
+    const createNewPatientByConctact = async (patientData) => {
+        try {
+            const res = await createNewPatientByConctactRequest(patientData);
+            return res.data;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    const confirmationCitaMail = async(citaData) => {
+        console.log(citaData)
+        try {
+            const res = await confirmationCitaMailRequest(citaData);
+            return res.data;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    const getCita = async (citaId) => {
+        try {
+            const res = await getCitaRequest(citaId);
+            return res.data;
+        } catch (error) {
             throw new Error(error);
         }
     };
@@ -65,8 +115,13 @@ export function CitasProvider({ children }) {
         <CitasContext.Provider value={{
             citas,
             getCitas,
+            getCita,
             createCita,
             rutUsuario,
+            getUserData,
+            updateContactPatient,
+            createNewPatientByConctact,
+            confirmationCitaMail,
             profesionalEscogido,
             setProfesionalEscogido,
             getRutUsuario,
@@ -76,7 +131,8 @@ export function CitasProvider({ children }) {
             prevStep,
             citaDetails, 
             setCitaDetails, 
-            finalStep
+            finalStep,
+
         }}>
             {children}
         </CitasContext.Provider>

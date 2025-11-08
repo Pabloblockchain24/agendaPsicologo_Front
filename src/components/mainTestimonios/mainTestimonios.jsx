@@ -15,7 +15,7 @@ function MainTestimonios() {
     },
     {
       nombre: "Juan Pérez",
-      testimonio: "Gracias a SanarMental, encontré el apoyo emocional que necesitaba. Recomiendo totalmente sus servicios.",
+      testimonio: "Gracias a SanarMental, encontré el apoyo emocional que necesitaba. Recomendado totalmente.",
       imagen: "/userTestimonio.jpg"
     },
     {
@@ -30,12 +30,12 @@ function MainTestimonios() {
     },
     {
       nombre: "Laura Silva",
-      testimonio: "Las consultas online fueron muy convenientes y efectivas para mí.",
+      testimonio: "Las consultas online fueron muy convenientes y efectivas para mí. Dado que vivo en el campo.",
       imagen: "/userTestimonio.jpg"
     },
     {
       nombre: "Pedro Morales",
-      testimonio: "El equipo me hizo sentir muy cómodo. Totalmente recomendable.",
+      testimonio: "Es primera vez que termino una terapia completa. Gracias a Michelle.",
       imagen: "/userTestimonio.jpg"
     }
 
@@ -69,17 +69,16 @@ function MainTestimonios() {
   return (
     <section className="testimoniosSection">
       <h2 className="testimoniosTitle">Testimonios de nuestros pacientes</h2>
-
+  
       <Slider {...settings} className="testimonioSlider">
         {testimonios.map((testimonio, index) => (
-          <div>
-            <div key={index} className="testimonioCard">
+          <div key={index}> 
+            <div className="testimonioCard">
               <img src={testimonio.imagen} alt={testimonio.nombre} className="testimonioImagen" />
               <p className="testimonioTexto">"{testimonio.testimonio}"</p>
               <h3 className="testimonioNombre">- {testimonio.nombre}</h3>
             </div>
           </div>
-
         ))}
       </Slider>
     </section>

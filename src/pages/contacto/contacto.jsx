@@ -1,122 +1,122 @@
-import React, { useState } from 'react';
-import './contacto.css'; // Archivo CSS para los estilos
+/* Import dependencies */
+import React from 'react';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form"
+
+/* Import styles */
+import './contacto.css';
+
+/* Import context */
+import { useContact } from '../../context/ContactoContext';
 
 function Contacto() {
-  const [formData, setFormData] = useState({
-    nombre: '',
-    correo: '',
-    asunto: '',
-    mensaje: ''
-  });
-  
-  const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
+  const { handleSubmit, register } = useForm()
+  const { sendMailContact } = useContact();
 
-  // Maneja los cambios en los inputs
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-  // Validación simple del formulario
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.nombre) newErrors.nombre = 'El nombre es requerido.';
-    if (!formData.correo) {
-      newErrors.correo = 'El correo es requerido.';
-    } else if (!/\S+@\S+\.\S+/.test(formData.correo)) {
-      newErrors.correo = 'El correo no es válido.';
+  const onSubmit = handleSubmit(async (data) => {
+    Swal.fire({
+      title: 'Enviando correo...',
+      text: 'Por favor espera un momento.',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    }); 
+    try {
+      const solicitudContacto = await sendMailContact(data)
+      if (solicitudContacto.status = 200) {
+        Swal.fire({
+          title: '¡Correo enviado!',
+          confirmButtonText: 'OK',
+          customClass: {
+            confirmButton: 'swal2-button',
+          }
+        }).then(() => {
+          navigate('/')
+        })
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'Error',
+        text: 'Hubo un error al enviar el correo. Intenta de nuevo',
+        confirmButtonText: 'OK',
+        customClass: {
+          confirmButton: 'swal2-button',
+        }
+      })
     }
-    if (!formData.asunto) newErrors.asunto = 'El asunto es requerido.';
-    if (!formData.mensaje) newErrors.mensaje = 'El mensaje es requerido.';
-    
-    return newErrors;
-  };
-
-  // Maneja el envío del formulario
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length === 0) {
-      setSubmitted(true);
-      // Aquí podrías hacer el envío de los datos del formulario a un servidor
-      console.log('Formulario enviado:', formData);
-      // Resetear formulario si lo deseas
-      setFormData({
-        nombre: '',
-        correo: '',
-        asunto: '',
-        mensaje: ''
-      });
-    }
-  };
+  })
 
   return (
     <div className="contactoContainer">
+      <div className="contactoBox">
+        <h1 className="contactoTitle">Contáctanos</h1>
+        <h2 className="contactoSubtitle">
+          Estamos aquí para ayudarte. Completa el formulario y nos pondremos en contacto contigo lo antes posible.
+        </h2>
+        
+        <form className="contactoForm" onSubmit={onSubmit}>
+          <div className="contactoField">
+            <label htmlFor="nombre">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder='Nombre completo'
+              {...register("nombre", { required: true })}
+            />
+          </div>
 
-      <div className="contactoBox"> 
+          <div className="contactoField">
+            <label htmlFor="correo">Correo Electrónico</label>
+            <input
+              type="email"
+              id="correo"
+              name="correo"
+              placeholder='usuario@correo.com'
+              {...register("correo", { required: true })}
+            />
+          </div>
 
+          <div className="contactoField">
+            <label htmlFor="telefono">Teléfono contacto</label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              placeholder='(569) 1234 5678'
+              {...register("telefono", { required: true })}
+            />
+          </div>
 
-      <h1 className="contactoTitle">Contáctanos</h1>
-      <p className="contactoSubtitle">
-        Estamos aquí para ayudarte. Completa el formulario y nos pondremos en contacto contigo lo antes posible.
-      </p>
-      {submitted && <p className="contactoSuccess">¡Mensaje enviado con éxito!</p>}
-      <form className="contactoForm" onSubmit={handleSubmit}>
-        <div className="contactoField">
-          <label htmlFor="nombre">Nombre</label>
-          <input
-            type="text"
-            id="nombre"
-            name="nombre"
-            value={formData.nombre}
-            onChange={handleChange}
-          />
-          {errors.nombre && <span className="errorText">{errors.nombre}</span>}
-        </div>
-        <div className="contactoField">
-          <label htmlFor="correo">Correo Electrónico</label>
-          <input
-            type="email"
-            id="correo"
-            name="correo"
-            value={formData.correo}
-            onChange={handleChange}
-          />
-          {errors.correo && <span className="errorText">{errors.correo}</span>}
-        </div>
-        <div className="contactoField">
-          <label htmlFor="asunto">Asunto</label>
-          <input
-            type="text"
-            id="asunto"
-            name="asunto"
-            value={formData.asunto}
-            onChange={handleChange}
-          />
-          {errors.asunto && <span className="errorText">{errors.asunto}</span>}
-        </div>
-        <div className="contactoField">
-          <label htmlFor="mensaje">Mensaje</label>
-          <textarea
-            id="mensaje"
-            name="mensaje"
-            value={formData.mensaje}
-            onChange={handleChange}
-          />
-          {errors.mensaje && <span className="errorText">{errors.mensaje}</span>}
-        </div>
-        <button type="submit" className="contactoButton">ENVIAR</button>
-      </form>
+          <div className="contactoField">
+            <label htmlFor="asunto">Asunto</label>
+            <input
+              type="text"
+              id="asunto"
+              name="asunto"
+              placeholder='Escribe un asunto'
+              {...register("asunto", { required: true })}
+            />
+          </div>
+
+          <div className="contactoField">
+            <label htmlFor="mensaje">Mensaje</label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              placeholder='Mi situación es ...'
+              {...register("mensaje", { required: true })}
+            />
+          </div>
+          <button type="submit" className="contactoButton">ENVIAR</button>
+        </form>
       </div>
-
     </div>
   );
 }
 
 export default Contacto;
+

@@ -15,7 +15,7 @@ import { useCitas } from '../../../context/CitasContext';
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 /*Import custom Toolbar */
-import CustomToolbar from '../../../utils/customToolbarCalendar';
+import CustomToolbar from '../../../utils/customToolbarCalendar/customToolbarCalendar';
 
 const locales = { 'es-ES': es };
 
@@ -30,9 +30,9 @@ const localizer = dateFnsLocalizer({
 });
 
 const availableHours = {
-    '2024-09-10': ['10:00', '11:00', '12:00', '13:00'], // Horas disponibles para el 10 de septiembre
-    '2024-09-11': ['14:00', '15:00', '16:00'], // Horas disponibles para el 11 de septiembre
-    '15-09-2024': ['14:00', '15:00', '16:00'], // Horas disponibles para el 11 de septiembre
+    '2025-11-09': ['10:00', '11:00', '12:00', '13:00'], // Horas disponibles para el 10 de septiembre
+    '2025-09-11': ['14:00', '15:00', '16:00'], // Horas disponibles para el 11 de septiembre
+    '09-11-2025': ['14:00', '15:00', '16:00'], // Horas disponibles para el 11 de septiembre
 };
 
 function TomarFecha() {
@@ -93,41 +93,48 @@ function TomarFecha() {
                 <div> Rut Paciente: {rutUsuario}</div>
                 <div> Profesional escogido: {profesionalEscogido.nombrePsicologoEscogido}</div>
 
-                <h1>Agenda de citas</h1>
-                <Calendar
-                    localizer={localizer}
-                    selectable
-                    onSelectSlot={handleSelectSlot}
-                    style={{ height: 500 }}
-                    defaultView="month"
-                    views={['month']} // Limita las vistas disponibles solo a 'month'
-                    onView={handleViewChange} // Prevenir que cambie la vista
-                    dayPropGetter={dayPropGetter} // Aplica estilos dinámicos a los días
-                    components={{
-                        toolbar: CustomToolbar, // Usamos el toolbar personalizado
-                    }}
-                />
+                <div className='calendarContainer'>
+                    <h2>Agenda de citas</h2>
+                    <Calendar
+                        localizer={localizer}
+                        className='calendarContent'
+                        selectable
+                        onSelectSlot={handleSelectSlot}
+                        style={{ height: 500 }}
+                        defaultView="month"
+                        views={['month']} // Limita las vistas disponibles solo a 'month'
+                        onView={handleViewChange} // Prevenir que cambie la vista
+                        dayPropGetter={dayPropGetter} // Aplica estilos dinámicos a los días
+                        components={{
+                            toolbar: CustomToolbar, // Usamos el toolbar personalizado
+                        }}
+                    />
 
-                {selectedDate && (
-                    <div className='hoursContainer'>
-                        <h2>Horas disponibles para {selectedDate}</h2>
-                        {hours.length > 0 ? (
-                            <ul className='hoursList'>
-                                {hours.map((hour, index) => (
-                                    <li
-                                        key={index}
-                                        className={`hourItem ${selectedHour === hour ? 'selected' : ''}`}
-                                        onClick={() => handleHourSelect(hour)} // Seleccionar la hora
-                                    >
-                                        {hour}
-                                    </li>
-                                ))}
-                            </ul>
-                        ) : (
-                            <p className='noHoursMessage'>No hay horas disponibles para esta fecha.</p>
-                        )}
-                    </div>
-                )}
+                    {selectedDate && (
+                        <div className='hoursContainer'>
+                            <div className='hoursContent'>
+                                <h2>Horas disponibles para {selectedDate}</h2>
+                                {hours.length > 0 ? (
+                                    <ul className='hoursList'>
+                                        {hours.map((hour, index) => (
+                                            <li
+                                                key={index}
+                                                className={`hourItem ${selectedHour === hour ? 'selected' : ''}`}
+                                                onClick={() => handleHourSelect(hour)} // Seleccionar la hora
+                                            >
+                                                {hour}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p className='noHoursMessage'>No hay horas disponibles para esta fecha.</p>
+                                )}
+                            </div>
+
+                        </div>
+                    )}
+                </div>
+
 
                 <footer className='formNavigationContainer'>
                     {currentStep > 0 && (
@@ -139,8 +146,8 @@ function TomarFecha() {
                     <button
                         type="button"
                         className='citasCardButton'
-                        onClick={handleContinue} // Validar y avanzar
-                        disabled={!selectedHour} // Deshabilitar si no hay hora seleccionada
+                        onClick={handleContinue}
+                        disabled={!selectedHour}
                     >
                         CONTINUAR
                     </button>

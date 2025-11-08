@@ -11,29 +11,34 @@ import ReservaHoras from "./pages/reservaHoras/reservaHoras"
 import Nosotros from "./pages/nosotros/nosotros"
 import Contacto from "./pages/contacto/contacto"
 import Psicologos from "./pages/psicologos/psicologos"
+import ConfirmarCita from "./pages/confirmarCita/confirmarCita";
 import NotFound from "./pages/notFound/notFound"
 
 /* import context*/
 import { CitasProvider } from "./context/CitasContext";
 import { PsicologosProvider } from "./context/PsicologosContext";
+import { ContactProvider } from "./context/ContactoContext";
 function App() {
 
   return (
     <BrowserRouter>
       <CitasProvider>
-        <PsicologosProvider>
-          <Navbar />
-          <Routes>
-            <Route path="*" element={<NotFound />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/reservarHora" element={<ReservaHoras />} />
-            <Route path="/nosotros" element={<Nosotros />} />
-            <Route path="/psicologos" element={<Psicologos />} />
-            <Route path="/contacto" element={<Contacto />} />
+        <ContactProvider>
+          <PsicologosProvider>
+            <Navbar />
+            <Routes>
+              <Route path="*" element={<NotFound />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/reservarHora" element={<ReservaHoras />} />
+              <Route path="/nosotros" element={<Nosotros />} />
+              <Route path="/psicologos" element={<Psicologos />} />
+              <Route path="/contacto" element={<Contacto />} />
+              <Route path="/confirmarHora/:cid" element={<ConfirmarCita />} />
 
-          </Routes>
-          <Footer />
-        </PsicologosProvider>
+            </Routes>
+            <Footer />
+          </PsicologosProvider>
+        </ContactProvider>
       </CitasProvider>
     </BrowserRouter>
   )

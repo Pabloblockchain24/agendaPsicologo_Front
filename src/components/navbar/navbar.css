@@ -1,17 +1,27 @@
+.navbar{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
 .topBanner {
     background-color: var(--secondary);
     color: var(--tertiary);
     padding-block: 0.5rem;
     text-align: center;
+
 }
 
 .navbarContainer {
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding-inline: 5rem;
     padding-block: 0.5rem;
+    background-color: var(--primary);
+    background-image: linear-gradient(to bottom, white, 33%, #9dccd6);
 }
 
 .navbarLogo {

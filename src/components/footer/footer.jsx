@@ -12,7 +12,7 @@ function Footer() {
       <section className="footerSection">
 
         <article className="footerAbout">
-          <img src="../../logoClinica.jpg" alt="Logo Clinica" className="footerLogo" />
+          <img src="../../logoClinicaFooter.png" alt="Logo Clinica" className="footerLogo" />
           <p>En SanarMental, ofrecemos apoyo y atención psicológica para ayudarte a encontrar el bienestar emocional que necesitas. Nuestro equipo está aquí para escucharte y guiarte en tu camino hacia una vida más saludable y equilibrada.</p>
         </article>
 
